@@ -18,7 +18,7 @@ export default function createStore(history) {
       users: UserReducer,
       // posts: ProductsReducer,
       products: ProductsReducer,
-      cart: CartsReducer,
+      carts: CartsReducer,
     }),
     compose(
       applyMiddleware(routerMiddleware(history), thunk)

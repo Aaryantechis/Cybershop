@@ -84,7 +84,7 @@ export default class API {
   addCarts = async (item_id) => {
     const savedCart = await api
       .post("/cart/add/", {
-        item: item_id,
+        item_id,
         quantity: 1,
       })
       .then((response) => {

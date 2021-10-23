@@ -13,22 +13,22 @@ const Item = ({ product }) => {
   const dispatch = useDispatch();
   const carts = getCarts(selector);
   const subtotal = getSubtotal(selector);
-  const [particularCart, setParticularCart] = useState({ quantity: 0 });
+  const [particularCart, setParticularCart] = useState(null);
   const key = localStorage.getItem("LOGIN_USER_KEY");
-
   useEffect(() => {
-    if (carts != undefined && carts.length > 0) {
-      console.log("carts");
-      console.log(carts);
-      let matchedCarts = carts.filter((cart) => cart.product.id == product.id);
-      console.log("matchedCarts");
-      console.log(matchedCarts);
+    if (carts.length > 0) {
+      // console.log("carts");
+      // console.log(carts);
+      const matchedCarts = carts.filter((cart) => cart.item.id == product.id);
+      // console.log("matchedCarts");
+      // console.log(matchedCarts);
+      // console.log("matchedCarts",matchedCarts);
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
         setParticularCart(null);
       }
-      console.log("particular", particularCart);
+      // console.log("particularCart", particularCart);
     }
   }, [subtotal]);
 
@@ -54,7 +54,7 @@ const Item = ({ product }) => {
 
         <div class="info-bottom">
           <div class="price">{product.price}</div>
-          {particularCart && particularCart.quantity > 0 ? (
+          {!particularCart ? (
             <div class="add" onClick={clickAddCart}>
               Add +
             </div>
