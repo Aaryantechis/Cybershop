@@ -2,7 +2,7 @@ import API from "../../API";
 import { signInAction, signUpAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
 const api = new API();
-const LOGIN_USER_KEY = "LOGIN_USER_KEY";
+const LOGIN_USER_KEY = "CYBERSHOP_LOGIN_USER_KEY";
 export const fetchUserFromLocalStorage = () => {
   return async (dispatch) => {
     const userJSON = localStorage.getItem(LOGIN_USER_KEY);
@@ -58,4 +58,3 @@ export const signOut = () => {
     dispatch(push("/"));
   };
 };
-

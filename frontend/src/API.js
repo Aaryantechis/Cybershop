@@ -1,7 +1,7 @@
 import axios from "axios";
 
 var baseURL;
-const LOGIN_USER_KEY = "BUDGET_NOTEBOOK_LOGIN_USER_KEY";
+const LOGIN_USER_KEY = "CYBERSHOP_LOGIN_USER_KEY";
 baseURL = "http://127.0.0.1:8000";
 
 const api = axios.create({
@@ -73,7 +73,7 @@ export default class API {
   getProducts = async () => {
     let url = "/items/";
     const products = await api
-      .get(url)
+      .get(url, { requireToken: true })
       .then((response) => {
         console.log("dsdsd", response.data);
         return response.data;
@@ -85,7 +85,7 @@ export default class API {
   };
   getProduct = async (id) => {
     const product = await api
-      .get("/items/" + id + "/")
+      .get("/items/" + id + "/", { requireToken: true })
       .then((response) => {
         return response.data;
       })
@@ -96,7 +96,9 @@ export default class API {
   };
   getCarts = async () => {
     const carts = await api
-      .get("cart/")
+      .get("cart/", {
+        requireToken: true,
+      })
       .then((response) => {
         return response.data;
       })
@@ -108,10 +110,14 @@ export default class API {
 
   addCarts = async (item_id) => {
     const savedCart = await api
-      .post("/cart/add/", {
-        item_id,
-        quantity: 1,
-      })
+      .post(
+        "/cart/add/",
+        {
+          item_id,
+          quantity: 1,
+        },
+        { requireToken: true }
+      )
       .then((response) => {
         return response.data;
       })
@@ -123,9 +129,13 @@ export default class API {
 
   updateCarts = async (cart_id, quantity) => {
     const savedCart = await api
-      .put("/cart/update/" + cart_id + "/", {
-        quantity: quantity,
-      })
+      .put(
+        "/cart/update/" + cart_id + "/",
+        {
+          quantity: quantity,
+        },
+        { requireToken: true }
+      )
       .then((response) => {
         return response.data;
       })
@@ -137,7 +147,7 @@ export default class API {
 
   deleteCarts = async (cart_id) => {
     const response = await api
-      .delete("/cart/delete/" + cart_id + "/")
+      .delete("/cart/delete/" + cart_id + "/", { requireToken: true })
       .then((response) => {
         return response.data;
       })
