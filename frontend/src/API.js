@@ -1,7 +1,7 @@
 import axios from "axios";
 
 var baseURL;
-
+const LOGIN_USER_KEY = "BUDGET_NOTEBOOK_LOGIN_USER_KEY";
 baseURL = "http://127.0.0.1:8000";
 
 const api = axios.create({
@@ -10,6 +10,31 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+api.interceptors.request.use(
+  (config) => {
+    if (config.requireToken) {
+      const user = localStorage.getItem(LOGIN_USER_KEY)
+        ? JSON.parse(localStorage.getItem(LOGIN_USER_KEY))
+        : null;
+      config.headers.common["Authorization"] = user.token;
+    }
+    return config;
+  },
+  (err) => console.error(err)
+);
+
+api.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      localStorage.removeItem(LOGIN_USER_KEY);
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default class API {
   signUp = async (username, email, password) => {
