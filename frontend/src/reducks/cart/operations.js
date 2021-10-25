@@ -43,7 +43,7 @@ export const addCart = (item) => {
 
 export const increaseCart = (cart_id) => {
   return async (dispatch, getState) => {
-    let prevCarts = getState().cart.list;
+    let prevCarts = getState().carts.list;
     let matchedCarts = prevCarts.filter((cart) => cart.id == cart_id);
     let nextSelectedCount = 0;
     if (matchedCarts.length > 0) {
@@ -53,8 +53,10 @@ export const increaseCart = (cart_id) => {
     return api
       .updateCarts(cart_id, nextSelectedCount)
       .then((updatedCart) => {
-        prevCarts = prevCarts.filter((cart) => cart.id != cart_id);
-        prevCarts.push(updatedCart);
+        prevCarts = prevCarts.filter((cart) => cart.id == cart_id);
+        updatedCart["item"] = updatedCart.item_id;
+        updatedCart["item_id"] = updatedCart.item_id.id;
+        prevCarts.unshift(updatedCart);
         const subtotal = calculateSubtotal(prevCarts);
         dispatch(increaseCartAction(prevCarts, subtotal));
       })
@@ -77,6 +79,8 @@ export const decreaseCart = (cart_id) => {
         .then((updatedCart) => {
           prevCarts = prevCarts.filter((cart) => cart.id != cart_id);
           prevCarts.push(updatedCart);
+          updatedCart["item"] = updatedCart.item_id;
+          updatedCart["item_id"] = updatedCart.item_id.id;
           const subtotal = calculateSubtotal(prevCarts);
           dispatch(decreaseCartAction(prevCarts, subtotal));
         })

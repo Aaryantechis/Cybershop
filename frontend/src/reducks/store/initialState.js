@@ -5,7 +5,7 @@ const initialState = {
   products: {
     list: [],
   },
-  cart: {
+  carts: {
     list: [],
     subtotal: 0,
   },

@@ -1,7 +1,7 @@
 import * as Actions from "./actions";
 import initialState from "../store/initialState";
 
-export const CartsReducer = (state = initialState.cart, action) => {
+export const CartsReducer = (state = initialState.carts, action) => {
   switch (action.type) {
     case Actions.FETCH_CART:
       return {
