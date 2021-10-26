@@ -14,21 +14,15 @@ const Item = ({ product }) => {
   const carts = getCarts(selector);
   const subtotal = getSubtotal(selector);
   const [particularCart, setParticularCart] = useState(null);
-  const key = localStorage.getItem("LOGIN_USER_KEY");
+  const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
   useEffect(() => {
     if (carts.length > 0) {
-      // console.log("carts");
-      // console.log(carts);
       const matchedCarts = carts.filter((cart) => cart.item.id == product.id);
-      // console.log("matchedCarts");
-      // console.log(matchedCarts);
-      // console.log("matchedCarts",matchedCarts);
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
         setParticularCart(null);
       }
-      // console.log("particularCart", particularCart);
     }
   }, [subtotal]);
 

@@ -1,16 +1,13 @@
 import axios from "axios";
-
 var baseURL;
 const LOGIN_USER_KEY = "CYBERSHOP_LOGIN_USER_KEY";
 baseURL = "http://127.0.0.1:8000";
-
 const api = axios.create({
   baseURL: baseURL,
   headers: {
     "Content-Type": "application/json",
   },
 });
-
 api.interceptors.request.use(
   (config) => {
     if (config.requireToken) {
@@ -23,7 +20,6 @@ api.interceptors.request.use(
   },
   (err) => console.error(err)
 );
-
 api.interceptors.response.use(
   (response) => {
     return response.data;
@@ -35,7 +31,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
 export default class API {
   signUp = async (username, email, password) => {
     const formData = new FormData();
@@ -46,7 +41,7 @@ export default class API {
       .post("/user/signup/", formData)
       .then((response) => {
         console.log("hello world");
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
@@ -60,7 +55,7 @@ export default class API {
     const savedPost = await api
       .post("/user/signin/", formData)
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
@@ -75,8 +70,7 @@ export default class API {
     const products = await api
       .get(url, { requireToken: true })
       .then((response) => {
-        console.log("dsdsd", response.data);
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
@@ -87,7 +81,7 @@ export default class API {
     const product = await api
       .get("/items/" + id + "/", { requireToken: true })
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
@@ -100,14 +94,14 @@ export default class API {
         requireToken: true,
       })
       .then((response) => {
-        return response.data;
+        console.log(response);
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
       });
     return carts;
   };
-
   addCarts = async (item_id) => {
     const savedCart = await api
       .post(
@@ -119,14 +113,13 @@ export default class API {
         { requireToken: true }
       )
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
       });
     return savedCart;
   };
-
   updateCarts = async (cart_id, quantity) => {
     const savedCart = await api
       .put(
@@ -137,19 +130,18 @@ export default class API {
         { requireToken: true }
       )
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);
       });
     return savedCart;
   };
-
   deleteCarts = async (cart_id) => {
     const response = await api
       .delete("/cart/delete/" + cart_id + "/", { requireToken: true })
       .then((response) => {
-        return response.data;
+        return response;
       })
       .catch((error) => {
         throw new Error(error);

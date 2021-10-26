@@ -14,8 +14,10 @@ export const fetchCarts = () => {
     return api
       .getCarts()
       .then((carts) => {
+        console.log(carts);
         const subtotal = calculateSubtotal(carts);
         dispatch(fetchCartItemsAction(carts, subtotal));
+        console.log(subtotal);
       })
       .catch((error) => {
         alert("Failed to connect API: /carts/");
@@ -108,7 +110,7 @@ export const decreaseCart = (cart_id) => {
 const calculateSubtotal = (carts) => {
   let subtotal = 0;
   for (let key in carts) {
-    subtotal += Number(carts[key].item.price) * carts[key].quantity;
+    subtotal += Number(carts[key].item_id.price) * carts[key].quantity;
   }
   return subtotal;
 };
