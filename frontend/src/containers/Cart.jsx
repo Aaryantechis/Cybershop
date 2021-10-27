@@ -15,12 +15,6 @@ export default function Cart() {
   const items = getProducts(selector);
 
   useEffect(() => {
-    dispatch(fetchCarts());
-    console.log("test");
-    console.log(carts);
-  }, []);
-
-  useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchCarts());
   }, []);
@@ -41,11 +35,7 @@ export default function Cart() {
       {/* <!-- Content --> */}
       <section className="content">
         <ul className="items">
-          {console.log(carts)}
-          {carts &&
-            carts.map((cart) => (
-              <CartItem key={cart.item_id.id} item={cart.item_id} />
-            ))}
+          {carts && carts.map((cart) => <CartItem item={cart.item_id} />)}
         </ul>
       </section>
     </>

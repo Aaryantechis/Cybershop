@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import ImgSony256 from '../assets/img/sony-256.png';
-import ImgTvPicTop from '../assets/img/tv pic top.svg';
-import Product from '../components/common/Product';
-import { fetchCarts } from '../reducks/cart/operations';
-import { getCarts } from '../reducks/cart/selectors';
-import { fetchProducts } from '../reducks/products/operations';
-import { getProducts } from '../reducks/products/selectors';
+import ImgSony256 from "../assets/img/sony-256.png";
+import ImgTvPicTop from "../assets/img/tv pic top.svg";
+import Product from "../components/common/Product";
+import { fetchCarts } from "../reducks/cart/operations";
+import { getCarts } from "../reducks/cart/selectors";
+import { fetchProducts } from "../reducks/products/operations";
+import { getProducts } from "../reducks/products/selectors";
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,10 @@ const Index = () => {
 
       <section className="content">
         <ul className="items">
-          {products && products.map((product) => <Product key={product.id} carts={carts} product={product} />)}
+          {products &&
+            products.map((product) => (
+              <Product key={product.id} carts={carts} product={product} />
+            ))}
         </ul>
       </section>
     </div>
