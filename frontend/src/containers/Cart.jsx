@@ -41,7 +41,11 @@ export default function Cart() {
       {/* <!-- Content --> */}
       <section class="content">
         <ul class="items">
-          {items && items.map((item) => <CartItem item={item} />)}
+          {console.log(carts)}
+          {carts &&
+            carts.map((cart) => (
+              <CartItem key={cart.item_id.id} item={cart.item_id} />
+            ))}
         </ul>
       </section>
     </>

@@ -16,8 +16,10 @@ const Item = ({ product }) => {
   const [particularCart, setParticularCart] = useState(null);
   const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
   useEffect(() => {
+    console.log("carts", carts);
     if (carts.length > 0) {
       const matchedCarts = carts.filter((cart) => cart.item.id == product.id);
+      console.log("hello", matchedCarts);
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
