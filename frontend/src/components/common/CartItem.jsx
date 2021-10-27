@@ -17,7 +17,7 @@ const CartItem = ({ item }) => {
   const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
   useEffect(() => {
     if (carts.length > 0) {
-      const matchedCarts = carts.filter((cart) => cart.item_id.id == item.id);
+      const matchedCarts = carts.filter((cart) => cart.item_id.id === item.id);
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
@@ -43,23 +43,23 @@ const CartItem = ({ item }) => {
   return (
     <>
       <li>
-        <img src={item.image} class="item-image" alt="" />
-        <div class="info">
-          <div class="name">{item.name}</div>
+        <img src={item.image} className="item-image" alt="" />
+        <div className="info">
+          <div className="name">{item.name}</div>
 
-          <div class="info-bottom">
-            <div class="price">${item.price}</div>
+          <div className="info-bottom">
+            <div className="price">${item.price}</div>
             {!particularCart ? (
-              <div class="add" onClick={clickAddCart}>
+              <div className="add" onClick={clickAddCart}>
                 Add +
               </div>
             ) : (
-              <div class="number">
-                <span class="minus" onClick={clickMinusCart}>
+              <div className="number">
+                <span className="minus" onClick={clickMinusCart}>
                   －
                 </span>
-                <span class="count">{particularCart.quantity}</span>
-                <span class="plus" onClick={clickPlusCart}>
+                <span className="count">{particularCart.quantity}</span>
+                <span className="plus" onClick={clickPlusCart}>
                   +
                 </span>
               </div>

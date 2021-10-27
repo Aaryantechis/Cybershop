@@ -4,22 +4,20 @@ import {
   addCart,
   increaseCart,
   decreaseCart,
+  fetchCarts,
 } from "../../reducks/cart/operations";
 import { getCarts, getSubtotal } from "../../reducks/cart/selectors";
 import { push } from "connected-react-router";
 
-const Item = ({ product }) => {
+const Item = ({ product, carts }) => {
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
-  const carts = getCarts(selector);
   const subtotal = getSubtotal(selector);
   const [particularCart, setParticularCart] = useState(null);
   const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
   useEffect(() => {
-    console.log("carts", carts);
     if (carts.length > 0) {
-      const matchedCarts = carts.filter((cart) => cart.item.id == product.id);
-      console.log("hello", matchedCarts);
+      const matchedCarts = carts.filter((cart) => cart.item_id.id === product.id);
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
@@ -28,39 +26,42 @@ const Item = ({ product }) => {
     }
   }, [subtotal]);
 
-  const clickAddCart = () => {
+  const clickAddCart = async () => {
     if (key) {
-      dispatch(addCart(product));
+      await dispatch(addCart(product));
+      await dispatch(fetchCarts());
     } else {
       dispatch(push("/signin"));
     }
   };
 
-  const clickPlusCart = () => {
-    dispatch(increaseCart(particularCart.id));
+  const clickPlusCart = async () => {
+    await dispatch(increaseCart(particularCart.id));
+    await dispatch(fetchCarts());
   };
-  const clickMinusCart = () => {
-    dispatch(decreaseCart(particularCart.id));
+  const clickMinusCart = async () => {
+    await dispatch(decreaseCart(particularCart.id));
+    await dispatch(fetchCarts());
   };
   return (
     <li key={product.id}>
-      <img src={product.image} class="item-image" alt="" />
-      <div class="info">
-        <div class="name">{product.name}</div>
+      <img src={product.image} className="item-image" alt="" />
+      <div className="info">
+        <div className="name">{product.name}</div>
 
-        <div class="info-bottom">
-          <div class="price">{product.price}</div>
+        <div className="info-bottom">
+          <div className="price">{product.price}</div>
           {!particularCart ? (
-            <div class="add" onClick={clickAddCart}>
+            <div className="add" onClick={clickAddCart}>
               Add +
             </div>
           ) : (
-            <div class="number">
-              <span class="minus" onClick={clickMinusCart}>
+            <div className="number">
+              <span className="minus" onClick={clickMinusCart}>
                 －
               </span>
-              <span class="count">{particularCart.quantity}</span>
-              <span class="plus" onClick={clickPlusCart}>
+              <span className="count">{particularCart.quantity}</span>
+              <span className="plus" onClick={clickPlusCart}>
                 +
               </span>
             </div>

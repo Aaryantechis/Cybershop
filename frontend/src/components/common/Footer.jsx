@@ -8,9 +8,9 @@ const Footer = () => {
   return (
     <footer>
 
-      <div class="subtotal">
-        <span class="subtotal-test">Subtotal:</span>
-        <span class="subtotal-price">$1000</span>
+      <div className="subtotal">
+        <span className="subtotal-test">Subtotal:</span>
+        <span className="subtotal-price">$1000</span>
       </div>
 
       <button>Check Out</button>
