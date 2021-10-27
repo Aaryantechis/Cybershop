@@ -4,6 +4,7 @@ import {
   addCart,
   increaseCart,
   decreaseCart,
+  fetchCarts,
 } from "../../reducks/cart/operations";
 import { getCarts, getSubtotal } from "../../reducks/cart/selectors";
 import { push } from "connected-react-router";
@@ -26,19 +27,22 @@ const CartItem = ({ item }) => {
     }
   }, [subtotal]);
 
-  const clickAddCart = () => {
+  const clickAddCart = async () => {
     if (key) {
-      dispatch(addCart(item));
+      await dispatch(addCart(item));
+      await dispatch(fetchCarts());
     } else {
       dispatch(push("/signin"));
     }
   };
 
-  const clickPlusCart = () => {
-    dispatch(increaseCart(particularCart.id));
+  const clickPlusCart = async () => {
+    await dispatch(increaseCart(particularCart.id));
+    await dispatch(fetchCarts());
   };
-  const clickMinusCart = () => {
-    dispatch(decreaseCart(particularCart.id));
+  const clickMinusCart = async () => {
+    await dispatch(decreaseCart(particularCart.id));
+    await dispatch(fetchCarts());
   };
   return (
     <>
