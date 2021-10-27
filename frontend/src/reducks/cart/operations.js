@@ -7,17 +7,14 @@ import {
 } from "./actions";
 
 const api = new API();
-const CARTS_KEY = "CARTS_KEY";
 
 export const fetchCarts = () => {
   return async (dispatch) => {
     return api
       .getCarts()
       .then((carts) => {
-        console.log(carts);
         const subtotal = calculateSubtotal(carts);
         dispatch(fetchCartItemsAction(carts, subtotal));
-        console.log(subtotal);
       })
       .catch((error) => {
         alert("Failed to connect API: /carts/");
@@ -46,7 +43,7 @@ export const addCart = (item) => {
 export const increaseCart = (cart_id) => {
   return async (dispatch, getState) => {
     let prevCarts = getState().carts.list;
-    let matchedCarts = prevCarts.filter((cart) => cart.id == cart_id);
+    let matchedCarts = prevCarts.filter((cart) => cart.id === cart_id);
     let nextSelectedCount = 0;
     if (matchedCarts.length > 0) {
       nextSelectedCount = matchedCarts[0].quantity + 1;
@@ -55,7 +52,7 @@ export const increaseCart = (cart_id) => {
     return api
       .updateCarts(cart_id, nextSelectedCount)
       .then((updatedCart) => {
-        prevCarts = prevCarts.filter((cart) => cart.id == cart_id);
+        prevCarts = prevCarts.filter((cart) => cart.id === cart_id);
         updatedCart["item"] = updatedCart.item_id;
         updatedCart["item_id"] = updatedCart.item_id.id;
         prevCarts.unshift(updatedCart);
@@ -72,14 +69,14 @@ export const increaseCart = (cart_id) => {
 export const decreaseCart = (cart_id) => {
   return async (dispatch, getState) => {
     let prevCarts = getState().carts.list;
-    let matchedCarts = prevCarts.filter((cart) => cart.id == cart_id);
+    let matchedCarts = prevCarts.filter((cart) => cart.id === cart_id);
     let nextSelectedCount = matchedCarts[0].quantity - 1;
     if (nextSelectedCount > 0) {
       // if quantity is more than 0, update
       return api
         .updateCarts(cart_id, nextSelectedCount)
         .then((updatedCart) => {
-          prevCarts = prevCarts.filter((cart) => cart.id != cart_id);
+          prevCarts = prevCarts.filter((cart) => cart.id !== cart_id);
           prevCarts.push(updatedCart);
           updatedCart["item"] = updatedCart.item_id;
           updatedCart["item_id"] = updatedCart.item_id.id;
@@ -95,7 +92,7 @@ export const decreaseCart = (cart_id) => {
       return api
         .deleteCarts(cart_id)
         .then((deletedCart) => {
-          prevCarts = prevCarts.filter((cart) => cart.id != cart_id);
+          prevCarts = prevCarts.filter((cart) => cart.id !== cart_id);
           const subtotal = calculateSubtotal(prevCarts);
           dispatch(decreaseCartAction(prevCarts, subtotal));
         })

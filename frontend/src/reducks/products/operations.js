@@ -8,7 +8,6 @@ export const fetchProducts = () => {
     return api
       .getProducts()
       .then((products) => {
-        console.log(products);
         dispatch(fetchProductsAction(products));
       })
       .catch((error) => {

@@ -94,7 +94,6 @@ export default class API {
         requireToken: true,
       })
       .then((response) => {
-        console.log(response);
         return response;
       })
       .catch((error) => {

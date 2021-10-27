@@ -1,38 +1,36 @@
-import React from "react"
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
 
 const Shipping = () => {
     return (
         <div>
-            <div class="box">
+            <div className="box">
              <p>- Order your items -</p>
             </div>
 
-            <section class="details">
+            <section className="details">
               <h3>Shipment Details</h3>
               <h4>Please check your items and confirm it</h4>
-              <div class="box2">
-                <div class="selected1">
+              <div className="box2">
+                <div className="selected1">
                   <p>1</p>
                   <p>$399.99</p>
                 </div>
 
-                <div class="selected2">
+                <div className="selected2">
                   <p>Airpods Wireless Bluetooth Headphones</p>
                   <p>2</p>
                   <p>$124.99</p>
                 </div>
                 <hr color="#56F702">
 
-                <div class="total">
+                <div className="total">
                   <p>Total Price</p>
                   <p id="total">3</p>
                   <p>$649.97</p>
                 </div>
               </div>
 
-              <div class="form">
+              <div className="form">
                 <label for="name">Full name</label> <br/>
                 <input type="text" id="name" name="name" required placeholder="Enter Recipient's name"/> <br/>
 
@@ -55,7 +53,7 @@ const Shipping = () => {
                 <input type="text" id="State" name="state" required placeholder="Enter State"/>
               </div>
 
-              <div class="submit">
+              <div className="submit">
                 <button type="submit">SUBMIT</button>
               </div>
             </section>

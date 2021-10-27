@@ -12,17 +12,17 @@ const Header = () => {
   return (
     <header>
 
-      <section class="header-box">
+      <section className="header-box">
 
-        <div class="header">
-          <span class="cyber">Cyber</span><span class="shop">shop</span>
+        <div className="header">
+          <span className="cyber">Cyber</span><span className="shop">shop</span>
         </div>
 
-        <div class="sign-in">
+        <div className="sign-in">
           Sign In
 
           <link rel="stylesheet" href="style.css"/>
-          <a href="#"><img class="cart-icon" src={ImageDribbleLightPreview} /></a>
+          <a href="#"><img className="cart-icon" src={ImageDribbleLightPreview} /></a>
         </div>
 
       </section>

@@ -27,20 +27,20 @@ export default function Cart() {
   return (
     <>
       {/* <!-- Main Visual --> */}
-      <section class="main-visual">
-        <img class="top" src={ImgCover} alt="" />
+      <section className="main-visual">
+        <img className="top" src={ImgCover} alt="" />
         <img id="sony" src={ImgSony} />
 
-        <div class="ad">
-          <p class="one">A NEW TV EXPERIENCE AWAKENS</p>
-          <p class="two">BRAVIA</p>
-          <p class="three">OLED</p>
+        <div className="ad">
+          <p className="one">A NEW TV EXPERIENCE AWAKENS</p>
+          <p className="two">BRAVIA</p>
+          <p className="three">OLED</p>
         </div>
       </section>
 
       {/* <!-- Content --> */}
-      <section class="content">
-        <ul class="items">
+      <section className="content">
+        <ul className="items">
           {console.log(carts)}
           {carts &&
             carts.map((cart) => (
