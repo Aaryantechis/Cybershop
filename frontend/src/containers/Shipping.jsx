@@ -4,6 +4,7 @@ import API from "../API";
 import { getCarts, getSubtotal } from "../reducks/cart/selectors";
 import { fetchCarts } from "../reducks/cart/operations";
 import { addOrder } from "../reducks/order/operations";
+import { push } from "connected-react-router";
 const api = new API();
 
 const Shipping = () => {
@@ -80,6 +81,7 @@ const Shipping = () => {
     };
     dispatch(addOrder(params));
     e.preventDefault();
+    dispatch(push("thankyou"));
   };
   return (
     <div>
