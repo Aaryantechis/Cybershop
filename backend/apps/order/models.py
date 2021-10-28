@@ -8,8 +8,8 @@ class Order(models.Model):
     class Meta(object):
         db_table = 'order'
 
-    user_id = models.ForeignKey(
-        User, on_delete=models.CASCADE, db_index=True
+    user = models.ForeignKey(
+        User, related_name='related_user', on_delete=models.CASCADE
     )
     total_price = models.DecimalField(
         'Total Price', blank=False, null=False, max_digits=11, decimal_places=2
