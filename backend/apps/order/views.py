@@ -18,26 +18,30 @@ class OrderAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     serializer_class = OrderSerializer
 
     def post(self, request, *args, **kwargs):
+        serializer = OrderSerializer()
+        serializer.validate(request.data)
+
         # Save to order
         request.data._mutable = True
-        request.data["user"] = request.login_user.id
-        order_form = OrderForm(request.data)
-        print('data error',order_form.errors().as_json())
-        if not order_form.is_valid():
-            response = Response({"error": "Request data is not correct."}, status=status.HTTP_404_NOT_FOUND)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
 
-        order = order_form.save()
+        order = Order.objects.create(
+            full_name= request.data['full_name'],
+            total_price= request.data['total_price'],
+            address_line1= request.data['address_line1'],
+            address_line2= request.data['address_line2'],
+            city= request.data['city'],
+            state= request.data['state'],
+            postal_code= request.data['postal_code'],
+            country= request.data['country'],
+            telephone= request.data['telephone'],
+            user_id= request.login_user.id,
+        )
 
         # Get cart items of login user
-        carts = Cart.objects.filter(user=request.login_user)
-
+        carts = Cart.objects.filter(user_id=request.login_user.id)
         # Save to order items
         for cart in carts:
-            order_item_form = OrderItemForm({"order_id": order.id, "item_id":cart.item.id, "quantity":cart.quantity})
+            order_item_form = OrderItemForm({"order_id": order.id, "item_id":cart.item_id.id, "quantity":cart.quantity})
             order_item_form.save()
         
         # Delete cart items
