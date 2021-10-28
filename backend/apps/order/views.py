@@ -19,8 +19,10 @@ class OrderAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         # Save to order
+        request.data._mutable = True
         request.data["user"] = request.login_user.id
         order_form = OrderForm(request.data)
+        print('data error',order_form.errors().as_json())
         if not order_form.is_valid():
             response = Response({"error": "Request data is not correct."}, status=status.HTTP_404_NOT_FOUND)
             response.accepted_renderer = JSONRenderer()

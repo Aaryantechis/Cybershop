@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+.row {
+  display: flex;
+}
+
 .header-box {
   width: 100%;
   height: 50px;
@@ -79,9 +83,8 @@ body {
   position: absolute;
   top: 6%;
 }
-#sony{
+#sony {
   z-index: 10;
-
 }
 
 .main-visual .ad {
@@ -437,7 +440,7 @@ footer button {
   margin-bottom: 15px;
 }
 
-.details .submit button {
+.submitbutton {
   background-color: #3eaf21;
   color: #ffffff;
   margin-top: 10px;
@@ -448,6 +451,9 @@ footer button {
   cursor: pointer;
   width: 150px;
   height: 50px;
+}
+.submit {
+  margin-bottom: 100px;
 }
 
 .message p {
@@ -468,6 +474,11 @@ footer button {
   width: 250px;
   height: 50px;
   margin-left: 40%;
+}
+table tr td {
+  height: 40px;
+  width: 200px;
+  color: white;
 }
 
 @media screen and (max-width: 500px) {
@@ -520,7 +531,6 @@ footer button {
     position: absolute;
     right: 38%;
     top: 6%;
-    
   }
 }
 
@@ -530,18 +540,17 @@ footer button {
     top: 78px;
   }
 }
-@media screen and (min-width: 500px){
-.main-visual #sony {
-  width: 10vw;
-  height: 8vh;
-  position: absolute;
-  right: 38%;
-  top: 10%;
-}
+@media screen and (min-width: 500px) {
+  .main-visual #sony {
+    width: 10vw;
+    height: 8vh;
+    position: absolute;
+    right: 38%;
+    top: 10%;
+  }
 }
 
-  
-  @media screen and (min-width: 900px){
+@media screen and (min-width: 900px) {
   .main-visual #sony {
     z-index: 100;
     width: 16%;
@@ -549,60 +558,42 @@ footer button {
     height: auto;
     position: absolute;
     top: 5%;
-}}
-
-@media screen and (min-width: 500px){
-.popup {
-  position: fixed;
-  background-color: rgba(250, 242, 242, 0.5);
-  top: 0;
-  left: -161px;
-  right: -170px;
-  bottom: 10px;
-  z-index: 100;
-  height: 60%;
-}
+  }
 }
 
-
-@media screen and (min-width: 500px){
-.message p {
-  font-family: Roboto;
-  color: #e4e4e4;
-  margin-left: 10%;
-}
-}
-@media screen and (min-width: 500px){
-.box p {
-  font-family: Roboto;
-  color: #ffffff;
-  font-size: 30px;
-  text-align: center;
-  margin-top: 0px;
-  position: absolute;
-  top: 40px;
-  
-}
-}
-@media screen and (min-width: 500px){
-.backhome button {
-  background-color: #3eaf21;
-  color: #ffffff;
-  margin-top: 50px;
-  border: 0;
-  padding: 15px 25px;
-  font-size: 20px;
-  font-family: Roboto;
-  cursor: pointer;
-  width: 250px;
-  height: 50px;
-  margin-left: 10%;
-}
+@media screen and (min-width: 500px) {
+  .popup {
+    position: fixed;
+    background-color: rgba(250, 242, 242, 0.5);
+    top: 0;
+    left: -161px;
+    right: -170px;
+    bottom: 10px;
+    z-index: 100;
+    height: 60%;
+  }
 }
 
-
-@media screen and (max-width: 700px){
-.backhome button {
+@media screen and (min-width: 500px) {
+  .message p {
+    font-family: Roboto;
+    color: #e4e4e4;
+    margin-left: 10%;
+  }
+}
+@media screen and (min-width: 500px) {
+  .box p {
+    font-family: Roboto;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0px;
+    position: absolute;
+    top: 40px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .backhome button {
     background-color: #3eaf21;
     color: #ffffff;
     margin-top: 50px;
@@ -614,17 +605,33 @@ footer button {
     width: 250px;
     height: 50px;
     margin-left: 10%;
+  }
 }
+
+@media screen and (max-width: 700px) {
+  .backhome button {
+    background-color: #3eaf21;
+    color: #ffffff;
+    margin-top: 50px;
+    border: 0;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-family: Roboto;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    margin-left: 10%;
+  }
 }
-@media screen and (max-width: 800px){
-.box p {
-  font-family: Roboto;
-  color: #ffffff;
-  font-size: 30px;
-  text-align: center;
-  margin-top: 0px;
-  position: absolute;
-  top: 40px;
-  left: 14%
-}
+@media screen and (max-width: 800px) {
+  .box p {
+    font-family: Roboto;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0px;
+    position: absolute;
+    top: 40px;
+    left: 14%;
+  }
 }

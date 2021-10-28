@@ -8,6 +8,8 @@ import { fetchCarts } from "../reducks/cart/operations";
 import { getCarts } from "../reducks/cart/selectors";
 import { fetchProducts } from "../reducks/products/operations";
 import { getProducts } from "../reducks/products/selectors";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -20,27 +22,30 @@ const Index = () => {
   }, []);
 
   return (
-    <div>
-      <section className="main-visual">
-        <img className="top" src={ImgTvPicTop} />
-        <img id="sony" src={ImgSony256} />
+    <>
+      <Header />
+      <div>
+        <section className="main-visual">
+          <img className="top" src={ImgTvPicTop} />
+          <img id="sony" src={ImgSony256} />
 
-        <div className="ad">
-          <p className="one">A NEW TV EXPERIENCE AWAKENS</p>
-          <p className="two">BRAVIA</p>
-          <p className="three">OLED</p>
-        </div>
-      </section>
+          <div className="ad">
+            <p className="one">A NEW TV EXPERIENCE AWAKENS</p>
+            <p className="two">BRAVIA</p>
+            <p className="three">OLED</p>
+          </div>
+        </section>
 
-      <section className="content">
-        <ul className="items">
-          {products &&
-            products.map((product) => (
-              <Product key={product.id} carts={carts} product={product} />
-            ))}
-        </ul>
-      </section>
-    </div>
+        <section className="content">
+          <ul className="items">
+            {products &&
+              products.map((product) => (
+                <Product key={product.id} carts={carts} product={product} />
+              ))}
+          </ul>
+        </section>
+      </div>
+    </>
   );
 };
 

@@ -46,7 +46,7 @@ const CartItem = ({ item }) => {
   };
   return (
     <>
-      <li>
+      <li key={item.id}>
         <img src={item.image} className="item-image" alt="" />
         <div className="info">
           <div className="name">{item.name}</div>

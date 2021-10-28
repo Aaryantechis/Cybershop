@@ -147,4 +147,22 @@ export default class API {
       });
     return response;
   };
+  orderAdd = async (orderBody) => {
+    console.log("orderBbody", orderBody);
+    const formData = new FormData();
+    for (const key in orderBody) {
+      formData.append(key, orderBody[key]);
+    }
+    const order = await api
+      .post("/order/add/", formData, { requireToken: true })
+      .then((response) => {
+        console.log(formData);
+        console.log(response.data);
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return order;
+  };
 }

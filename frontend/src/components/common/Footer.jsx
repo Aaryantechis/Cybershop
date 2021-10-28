@@ -1,20 +1,22 @@
+import { push } from "connected-react-router";
 import React from "react";
-import { useSelector } from "react-redux";
-import { getUser } from "../../reducks/user/selectors";
-
-const Footer = () => {
-  const selector = useSelector((state) => state);
-  const user = getUser(selector);
+import { useDispatch } from "react-redux";
+const Footer = ({ price }) => {
+  const dispatch = useDispatch();
   return (
     <footer>
-
       <div className="subtotal">
         <span className="subtotal-test">Subtotal:</span>
-        <span className="subtotal-price">$1000</span>
+        <span className="subtotal-price">${price}</span>
       </div>
 
-      <button>Check Out</button>
-
+      <button
+        onClick={() => {
+          dispatch(push("/shipping"));
+        }}
+      >
+        Check Out
+      </button>
     </footer>
   );
 };

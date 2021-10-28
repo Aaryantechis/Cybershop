@@ -15,6 +15,10 @@ const initialState = {
     token: "",
     token_expires_at: "",
   },
+  order: {
+    list: [],
+    subtotal: 0,
+  },
   signin: {
     email: "",
     password: "",

@@ -8,6 +8,8 @@ import { getCarts } from "../reducks/cart/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../reducks/users/selectors";
 import { getProducts } from "../reducks/products/selectors";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
 export default function Cart() {
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export default function Cart() {
   }, []);
   return (
     <>
+      <Header />
       {/* <!-- Main Visual --> */}
       <section className="main-visual">
         <img className="top" src={ImgCover} alt="" />
@@ -38,6 +41,7 @@ export default function Cart() {
           {carts && carts.map((cart) => <CartItem item={cart.item_id} />)}
         </ul>
       </section>
+      <Footer />
     </>
   );
 }

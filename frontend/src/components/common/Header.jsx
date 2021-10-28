@@ -1,34 +1,41 @@
 import React from "react";
 import ImageDribbleLightPreview from "../../assets/img/Dribbble-Light-Preview.png";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../reducks/user/selectors";
+import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state);
-  const user = getUser(selector);
-
   return (
     <header>
-
       <section className="header-box">
-
-        <div className="header">
-          <span className="cyber">Cyber</span><span className="shop">shop</span>
+        <div
+          className="header"
+          onClick={() => {
+            dispatch(push("/"));
+          }}
+        >
+          <span className="cyber">Cyber</span>
+          <span className="shop">shop</span>
         </div>
-
-        <div className="sign-in">
-          Sign In
-
-          <link rel="stylesheet" href="style.css"/>
-          <a href="#"><img className="cart-icon" src={ImageDribbleLightPreview} /></a>
+        <div className="row">
+          <div
+            className="sign-in"
+            onClick={() => {
+              dispatch(push("signin"));
+            }}
+          >
+            Sign In
+          </div>
+          <img
+            className="cart-icon"
+            src={ImageDribbleLightPreview}
+            onClick={() => {
+              dispatch(push("cart"));
+            }}
+          />
         </div>
-
       </section>
-
     </header>
-
   );
 };
 
