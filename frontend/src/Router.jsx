@@ -11,9 +11,7 @@ const Router = () => {
   return (
     <>
       <Switch>
-        <Route exact path={"/"} component={SignUp} />
-        <Route exact path={"/index"} component={Index} />
-        <Route exact path={"/signin"} component={SignIn} />
+        <Route exact path={"/"} component={Index} />
         <Route exact path={"/cart"} component={Cart} />
         <Route exact path={"/shipping"} component={Shipping} />
         <Route exact path={"/thankyou"} component={ThankYou} />

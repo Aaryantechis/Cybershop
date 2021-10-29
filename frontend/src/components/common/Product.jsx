@@ -17,7 +17,9 @@ const Item = ({ product, carts }) => {
   const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
   useEffect(() => {
     if (carts.length > 0) {
-      const matchedCarts = carts.filter((cart) => cart.item_id.id === product.id);
+      const matchedCarts = carts.filter(
+        (cart) => cart.item_id.id === product.id
+      );
       if (matchedCarts.length > 0) {
         setParticularCart(matchedCarts[0]);
       } else {
