@@ -12,16 +12,11 @@ const Header = () => {
   const [loginbutton, setloginbutton] = useState(false);
   useEffect(() => {
     const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
-    if (!key) {
-      setPopupSignin(true);
+    if (key) {
+      setPopupSignin(false);
     }
   }, []);
-  useEffect(() => {
-    const key = localStorage.getItem("CYBERSHOP_LOGIN_USER_KEY");
-    if (key) {
-      setPopupSignin(true);
-    }
-  }, [loginbutton]);
+
   const dispatch = useDispatch();
   const signOutButton = () => {
     dispatch(signOut());
@@ -44,22 +39,6 @@ const Header = () => {
             <span className="shop">shop</span>
           </div>
           <div className="row">
-            <div
-              className="sign-in"
-              onClick={() => {
-                setPopupSignin(true);
-              }}
-            >
-              Sign In
-            </div>
-            <div
-              className="sign-in"
-              onClick={() => {
-                setPopupSignup(true);
-              }}
-            >
-              Sign Up
-            </div>
             <span className="sign-in" onClick={signOutButton}>
               Logout
             </span>

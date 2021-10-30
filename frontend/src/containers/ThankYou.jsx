@@ -20,7 +20,7 @@ const ThankYou = () => {
         <div className="backhome">
           <button
             onClick={() => {
-              dispatch(push("/index"));
+              dispatch(push("/"));
             }}
           >
             Back to Home
