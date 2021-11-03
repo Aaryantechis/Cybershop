@@ -29,9 +29,8 @@ SECRET_KEY = 'django-insecure-ov#r^^&xv&^0vmc(zj&h_t^$*52@8jicn=%*z*@s-=li!s_p@=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'forum-prod-api.herokuapp.com']
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://forum-prod-frontend.herokuapp.com']
+ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -91,24 +90,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Heroku Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc5q0bvami10vf',
-        'USER': 'jcnvacjwcxiffz',
-        'PORT': 5432,
-        'HOST': 'ec2-35-153-91-18.compute-1.amazonaws.com',
-        'PASSWORD': 'b8e35ef1998ce6c36246e515d09acb26c66a5b3fa249704dc701644d102fa763',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dc5q0bvami10vf',
+#         'USER': 'jcnvacjwcxiffz',
+#         'PORT': 5432,
+#         'HOST': 'ec2-35-153-91-18.compute-1.amazonaws.com',
+#         'PASSWORD': 'b8e35ef1998ce6c36246e515d09acb26c66a5b3fa249704dc701644d102fa763',
+#     }
+# }
 
-# Local Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# # Local Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Heroku PostgreSQL Database
 django_heroku.settings(locals())
