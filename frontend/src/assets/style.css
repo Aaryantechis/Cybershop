@@ -529,7 +529,7 @@ table tr td {
     border: 2px solid #495050;
   }
   .popup p {
-    margin-left: auto;
+    margin-left: 0 auto;
   }
 }
 
