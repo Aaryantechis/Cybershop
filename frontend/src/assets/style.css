@@ -533,9 +533,6 @@ table tr td {
   }
 }
 
-
-}
-
 @media screen and (max-width: 500px) {
   ul.items {
     padding: 0;
