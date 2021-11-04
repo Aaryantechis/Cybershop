@@ -528,7 +528,7 @@ table tr td {
     border: 2px solid #495050;
   }
   .popup p {
-    margin-left: 0 auto;
+    margin: auto;
   }
   .popup h5 {
     margin: 20px;
