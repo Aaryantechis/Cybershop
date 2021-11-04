@@ -484,20 +484,19 @@ table tr td {
   color: white;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   footer .subtotal {
     padding: 0;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .popup .popup-content {
     top: 20%;
     left: 10%;
     width: 76%;
     padding: 0 4%;
   }
-
   .popup .popup-inner {
     position: relative;
     height: 60%;
