@@ -530,6 +530,10 @@ table tr td {
   .popup p {
     margin-left: 0 auto;
   }
+  .popup h5 {
+    margin: 20px;
+    font-size: 25px;
+  }
 }
 
 @media screen and (max-width: 500px) {
